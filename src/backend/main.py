@@ -37,7 +37,7 @@ app = FastAPI(
 )
 
 # CORS configuration
-origins = os.getenv("CORS_ORIGINS", "http://localhost:3000,http://localhost:8000").split(",")
+origins = os.getenv("CORS_ORIGINS", "http://localhost:4242,http://localhost:3000").split(",")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -55,7 +55,7 @@ app.include_router(analytics.router, prefix="/api/v1", tags=["analytics"])
 @app.get("/health")
 async def health_check():
     """Health check endpoint"""
-    return {"status": "healthy", "app": "BillSmith"}
+    return {"status": "healthy", "app": "BillSmith", "port": "4242"}
 
 # Serve frontend static files
 if os.path.exists("src/frontend"):
@@ -69,11 +69,11 @@ async def serve_frontend():
     if os.path.exists(frontend_path):
         return FileResponse(frontend_path)
     else:
-        return {"message": "BillSmith API is running. Frontend not yet built."}
+        return {"message": "BillSmith API is running on port 4242. Frontend not yet built."}
 
 if __name__ == "__main__":
     import uvicorn
-    port = int(os.getenv("PORT", 8000))
+    port = int(os.getenv("PORT", 4242))
     host = os.getenv("HOST", "0.0.0.0")
     
     uvicorn.run(
