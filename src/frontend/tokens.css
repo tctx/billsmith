@@ -1,0 +1,127 @@
+/**
+ * BillSmith Design Tokens
+ * 
+ * Core design system variables following the style guide.
+ * All components should reference these tokens.
+ */
+
+:root {
+  /* ===== COLOR PALETTE ===== */
+  
+  /* Primary Palette */
+  --color-ink: #222222;           /* Headings & body text */
+  --color-graphite: #666666;      /* Secondary text / labels */
+  --color-paper: #F8F9FA;         /* Background surfaces */
+  
+  /* Status Colors */
+  --color-error: #C62828;
+  --color-warning: #F9A825;
+  --color-success: #2E7D32;
+  
+  /* Category Colors (defaults) */
+  --color-accent-default: #2222FF;
+  --color-electricity: #FFB800;
+  --color-water: #00B4FF;
+  --color-gas: #FF6B00;
+  --color-rent: #2222FF;
+  --color-internet: #9C27B0;
+  --color-phone: #4CAF50;
+  
+  /* ===== SPACING SCALE ===== */
+  
+  --space-0: 0;           /* 0px - hairline divider offset */
+  --space-1: 0.25rem;     /* 4px - icon padding, chip gaps */
+  --space-2: 0.5rem;      /* 8px - small component padding */
+  --space-3: 0.75rem;     /* 12px - label ↔ input gap */
+  --space-4: 1rem;        /* 16px - default card padding */
+  --space-6: 1.5rem;      /* 24px - section separation */
+  --space-8: 2rem;        /* 32px - major block separation */
+  
+  /* ===== ELEVATION & SHADOWS ===== */
+  
+  --shadow-100: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-200: 0 4px 12px rgba(0, 0, 0, 0.10);
+  
+  /* ===== TYPOGRAPHY ===== */
+  
+  /* Font Stack */
+  --font-system: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  
+  /* Typography Scale */
+  --text-h1-size: 2.0rem;
+  --text-h1-weight: 600;
+  --text-h1-line: 1.1;
+  --text-h1-spacing: -0.01em;
+  
+  --text-h2-size: 1.5rem;
+  --text-h2-weight: 600;
+  --text-h2-line: 1.2;
+  --text-h2-spacing: -0.01em;
+  
+  --text-h3-size: 1.25rem;
+  --text-h3-weight: 600;
+  --text-h3-line: 1.25;
+  --text-h3-spacing: -0.005em;
+  
+  --text-body1-size: 1.0rem;
+  --text-body1-weight: 400;
+  --text-body1-line: 1.5;
+  --text-body1-spacing: 0;
+  
+  --text-body2-size: 0.875rem;
+  --text-body2-weight: 400;
+  --text-body2-line: 1.5;
+  --text-body2-spacing: 0;
+  
+  --text-caption-size: 0.75rem;
+  --text-caption-weight: 400;
+  --text-caption-line: 1.4;
+  --text-caption-spacing: 0.02em;
+  
+  --text-mono-size: 0.875rem;
+  --text-mono-weight: 500;
+  --text-mono-line: 1.4;
+  --text-mono-spacing: 0;
+  
+  /* ===== LAYOUT ===== */
+  
+  /* Grid */
+  --grid-columns-desktop: 12;
+  --grid-columns-tablet: 8;
+  --grid-columns-mobile: 1;
+  
+  --grid-gap-desktop: 24px;
+  --grid-gap-tablet: 16px;
+  --grid-gap-mobile: 16px;
+  
+  /* Breakpoints */
+  --breakpoint-mobile: 600px;
+  --breakpoint-tablet: 1024px;
+  
+  /* Component Dimensions */
+  --sidebar-width: 240px;
+  --header-height: 64px;
+  --card-radius: 8px;
+  --button-radius: 6px;
+  --chip-radius: 12px;
+  
+  /* ===== MOTION ===== */
+  
+  --duration-fast: 120ms;
+  --duration-base: 240ms;
+  --duration-slow: 400ms;
+  
+  --easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --easing-ease-out: ease-out;
+  --easing-linear: linear;
+  
+  /* ===== Z-INDEX SCALE ===== */
+  
+  --z-base: 0;
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-modal: 1030;
+  --z-toast: 1040;
+  --z-tooltip: 1050;
+} 

@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  # Redis for Celery task queue
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+
+  # PostgreSQL (optional - can use SQLite for MVP)
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: billsmith
+      POSTGRES_USER: billsmith
+      POSTGRES_PASSWORD: billsmith_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    profiles:
+      - postgres
+
+  # Celery Worker (will be added later)
+  worker:
+    build: .
+    command: celery -A src.backend.celery_app worker --loglevel=info
+    volumes:
+      - .:/app
+      - ./Bills:/app/Bills
+    depends_on:
+      - redis
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+    profiles:
+      - celery
+
+volumes:
+  redis_data:
+  postgres_data: 

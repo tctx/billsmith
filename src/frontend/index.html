@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BillSmith - Bill Pay Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header__logo">
+                <h2>BillSmith</h2>
+            </div>
+            <button class="btn btn--primary" id="addBillBtn">
+                + Add Bill
+            </button>
+        </header>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar__section">
+                <h3 class="text--caption mb-4">Categories</h3>
+                <p class="text--caption mb-4">Manage your bills</p>
+                <ul class="sidebar__list" id="categoriesList">
+                    <!-- Categories will be loaded here -->
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Dashboard Header -->
+            <div class="dashboard__header mb-6">
+                <h1>Bill Pay Dashboard</h1>
+                <p class="text--body2">Manage and track your bill payments across all categories</p>
+            </div>
+
+            <!-- Hero Category Card -->
+            <div class="dashboard__hero">
+                <div class="card card--hoverable" id="heroCard">
+                    <div class="hero-content">
+                        <div class="hero-header">
+                            <div class="hero-icon">
+                                <!-- Icon will be set dynamically -->
+                            </div>
+                            <div class="hero-text">
+                                <h2 id="heroTitle">Select a Category</h2>
+                                <p class="text--body2" id="heroSubtitle">Choose a category to view details</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Trends Section -->
+            <section class="trends-section mb-6">
+                <h2 class="mb-4">Payment Trends</h2>
+                <p class="text--body2 mb-4">Track your payment history over time</p>
+                <div class="chart-container">
+                    <svg id="trendsChart" width="100%" height="300"></svg>
+                </div>
+            </section>
+
+            <!-- Summary Cards -->
+            <section class="dashboard__summary mb-6">
+                <div class="card summary-card">
+                    <div class="summary-card__value" id="lastPaymentAmount">-</div>
+                    <div class="summary-card__label">Last Payment</div>
+                    <div class="text--caption" id="lastPaymentDate"></div>
+                </div>
+                <div class="card summary-card">
+                    <div class="summary-card__value" id="nextDueDate">-</div>
+                    <div class="summary-card__label">Next Due</div>
+                    <div class="text--caption" id="nextDueDays"></div>
+                </div>
+                <div class="card summary-card">
+                    <div class="summary-card__value" id="yearToDateAmount">-</div>
+                    <div class="summary-card__label">Year to Date</div>
+                    <div class="text--caption">Total spent this year</div>
+                </div>
+            </section>
+
+            <!-- Important Documents -->
+            <section class="documents-section">
+                <h2 class="mb-4">Important Documents</h2>
+                <p class="text--body2 mb-4">Access your bills, receipts, and statements</p>
+                <div class="card">
+                    <table class="table" id="documentsTable">
+                        <thead>
+                            <tr>
+                                <th>Document</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="documentsTableBody">
+                            <!-- Documents will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- File Upload Modal (hidden by default) -->
+    <div class="modal" id="uploadModal" style="display: none;">
+        <div class="modal__content">
+            <div class="modal__header">
+                <h3>Upload Bills</h3>
+                <button class="modal__close" id="closeUploadModal">&times;</button>
+            </div>
+            <div class="modal__body">
+                <div class="upload-zone" id="uploadZone">
+                    <p>Drag & drop your bills here or <button class="btn btn--secondary">Browse Files</button></p>
+                    <input type="file" id="fileInput" multiple accept=".pdf,.png,.jpg,.jpeg" style="display: none;">
+                </div>
+                <div class="upload-progress" id="uploadProgress" style="display: none;">
+                    <p>Processing files...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- JavaScript -->
+    <script src="app.js" type="module"></script>
+</body>
+</html> 
